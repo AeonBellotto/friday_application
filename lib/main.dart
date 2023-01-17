@@ -1,10 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:friday_application/SCREENS/right_side.dart';
 import 'package:friday_application/SCREENS/main_screen.dart';
 import 'package:friday_application/UTILITIES/theme.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 void main() {

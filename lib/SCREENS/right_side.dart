@@ -30,7 +30,7 @@ class _RightSideState extends State<RightSide> {
       if (_dateTime.second != DateTime.now().second) {
         setState(() {
           if (globalController.checkLoading().isTrue) {
-            globalController.getLocation();
+            globalController.getLocationGPS();
           }
           _dateTime = DateTime.now();
         });
