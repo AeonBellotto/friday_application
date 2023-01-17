@@ -28,6 +28,8 @@ class GlobalController extends GetxController {
     if (_isLoading.isTrue && enableGPS == true) {
       getLocationGPS();
     } else if (enableGPS == false) {
+      _latitude.value = 45.96429594143686;
+      _longitude.value = 12.652344675168429;
       getLocationMAN();
     } else {
       getIndex();
@@ -76,9 +78,6 @@ class GlobalController extends GetxController {
   }
 
   getLocationMAN() async {
-    _latitude.value = 45.96429594143686;
-    _longitude.value = 12.652344675168429;
-
     // calling our weather API
     FetchWeatherAPI()
         .processData(_latitude.value, _longitude.value)

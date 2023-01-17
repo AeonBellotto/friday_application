@@ -1,6 +1,10 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
+import 'package:location_geocoder/location_geocoder.dart';
 import '../CONTROLLER/global_controller.dart';
 
 class LocationWidget extends StatefulWidget {
@@ -17,9 +21,12 @@ class _LocationWidgetState extends State<LocationWidget> {
   final GlobalController globalController =
       Get.put(GlobalController(), permanent: true);
 
+  static String _apiKey = "AIzaSyB3SZ7M8QX8nYTgZvMykZ3NYNwTxjIdrKY";
+  late LocatitonGeocoder geocoder = LocatitonGeocoder(_apiKey);
+
   @override
   void initState() {
-    getAddress(globalController.getLattitude().value,
+    _getAddress(globalController.getLattitude().value,
         globalController.getLongitude().value);
     super.initState();
   }
@@ -32,6 +39,18 @@ class _LocationWidgetState extends State<LocationWidget> {
       city = place.locality!;
       country = place.isoCountryCode!;
     });
+  }
+
+  ///converts `coordinates` to actual `address` using google map api
+  _getAddress(latitude, longitude) async {
+    final address = await geocoder
+        .findAddressesFromCoordinates(Coordinates(latitude, longitude));
+    setState(() {
+      city = address.first.locality!;
+      country = address.first.countryCode!;
+    });
+    print(city);
+    print(country);
   }
 
   @override
