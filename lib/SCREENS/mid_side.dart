@@ -17,7 +17,7 @@ class _MidSideState extends State<MidSide> {
   void initState() {
     super.initState();
     setState(() {
-      _consoleLine = sshCom();
+      //_consoleLine = sshCom();
     });
   }
 
