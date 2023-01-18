@@ -30,13 +30,14 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.2
+  dart_console: ^1.1.2
   flutter:
     sdk: flutter
   geocoding: ^2.0.5
   geolocator: ^9.0.2
   get: ^4.6.5
   http: ^0.13.5
-  intl: ^0.18.0
+  intl: ^0.17.0
   location_geocoder: ^1.0.5
 
 dev_dependencies:
