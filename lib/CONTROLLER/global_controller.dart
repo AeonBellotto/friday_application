@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import '../API/fetch_weather.dart';
 import '../MODEL/weather_data.dart';
 
+double globalLat = 45.4646227438477;
+double globalLng = 9.192131254722357;
+
 class GlobalController extends GetxController {
   // create various variables
   final RxBool _isLoading = true.obs;
@@ -25,17 +28,33 @@ class GlobalController extends GetxController {
 
   @override
   void onInit() {
-    if (_isLoading.isTrue && enableGPS == true) {
+    if (_isLoading.isTrue) {
       getLocationGPS();
     } else if (enableGPS == false) {
-      _latitude.value = 45.96429594143686;
-      _longitude.value = 12.652344675168429;
+      _latitude.value = globalLat;
+      _longitude.value = globalLng;
       getLocationMAN();
     } else {
       getIndex();
     }
     super.onInit();
   }
+
+  /*
+    @override
+  void onInit() {
+    if (_isLoading.isTrue && enableGPS == true) {
+      getLocationGPS();
+    } else if (enableGPS == false) {
+      _latitude.value = globalLat;
+      _longitude.value = globalLng;
+      getLocationMAN();
+    } else {
+      getIndex();
+    }
+    super.onInit();
+  }
+  */
 
   getLocationGPS() async {
     bool isServiceEnabled;

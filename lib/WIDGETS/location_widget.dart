@@ -26,10 +26,28 @@ class _LocationWidgetState extends State<LocationWidget> {
 
   @override
   void initState() {
-    _getAddress(globalController.getLattitude().value,
-        globalController.getLongitude().value);
     super.initState();
+    Timer.periodic(const Duration(seconds: 5), (timer) {
+      setState(() {
+        _getAddress(globalLat, globalLng);
+      });
+    });
   }
+
+  /*
+    @override
+  void initState() {
+    super.initState();
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _getAddress(globalController.getLattitude().value,
+            globalController.getLongitude().value);
+        double test = globalController.getLattitude().value;
+        print("Lat in LOCWID : $test");
+      });
+    });
+  }
+  */
 
   getAddress(latitude, longitude) async {
     List<Placemark> placemark =

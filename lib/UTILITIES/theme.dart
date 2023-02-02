@@ -8,16 +8,23 @@ ThemeData theme() {
   );
 }
 
+int baseAlpha = 255;
+int baseRed = 255;
+int baseGreen = 255;
+int baseBlue = 255;
+
+Color baseColor = Color.fromARGB(baseAlpha, baseRed, baseGreen, baseBlue);
+
 TextTheme textTheme() {
-  return const TextTheme(
-    headline1: TextStyle(color: Colors.white, fontSize: 60),
-    headline2: TextStyle(color: Colors.white, fontSize: 40),
-    headline3: TextStyle(color: Colors.grey, fontSize: 20),
-    headline4: TextStyle(color: Colors.white, fontSize: 16),
-    headline5: TextStyle(color: Colors.white, fontSize: 14),
-    headline6: TextStyle(color: Colors.white, fontSize: 12),
-    bodyText1: TextStyle(color: Colors.white, fontSize: 12),
+  return TextTheme(
+    headline1: TextStyle(color: baseColor, fontSize: 60),
+    headline2: TextStyle(color: baseColor, fontSize: 40),
+    headline3: TextStyle(color: baseColor.withOpacity(0.7), fontSize: 20),
+    headline4: TextStyle(color: baseColor, fontSize: 16),
+    headline5: TextStyle(color: baseColor, fontSize: 14),
+    headline6: TextStyle(color: baseColor, fontSize: 12),
+    bodyText1: TextStyle(color: baseColor, fontSize: 12),
     bodyText2: TextStyle(
-        color: Colors.white, fontSize: 10, fontWeight: FontWeight.normal),
+        color: baseColor, fontSize: 10, fontWeight: FontWeight.normal),
   );
 }
