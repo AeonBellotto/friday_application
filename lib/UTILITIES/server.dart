@@ -18,7 +18,7 @@ class Server {
 
   Future<void> start() async {
     runZoned(() async {
-      server = await ServerSocket.bind("192.168.1.3", 4000);
+      server = await ServerSocket.bind("192.168.1.2", 4000);
       running = true;
       server!.listen(onRequest);
       final message = "Server is listening in port 4000";
