@@ -26,15 +26,10 @@ class _RightSideState extends State<RightSide> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(seconds: 30), (timer) {
-      if (_dateTime.second != DateTime.now().second) {
-        setState(() {
-          if (globalController.checkLoading().isTrue) {
-            globalController.getLocationGPS();
-          }
-          _dateTime = DateTime.now();
-        });
-      }
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        globalController.getLocationMAN();
+      });
     });
   }
 

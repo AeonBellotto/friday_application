@@ -40,22 +40,6 @@ class GlobalController extends GetxController {
     super.onInit();
   }
 
-  /*
-    @override
-  void onInit() {
-    if (_isLoading.isTrue && enableGPS == true) {
-      getLocationGPS();
-    } else if (enableGPS == false) {
-      _latitude.value = globalLat;
-      _longitude.value = globalLng;
-      getLocationMAN();
-    } else {
-      getIndex();
-    }
-    super.onInit();
-  }
-  */
-
   getLocationGPS() async {
     bool isServiceEnabled;
     LocationPermission locationPermission;
@@ -88,7 +72,8 @@ class GlobalController extends GetxController {
       _longitude.value = value.longitude;
       // calling our weather API
       return FetchWeatherAPI()
-          .processData(value.latitude, value.longitude)
+          .processData(globalLat,
+              globalLng) // processData(value.latitude, value.longitude)
           .then((value) {
         weatherData.value = value;
         _isLoading.value = false;
@@ -99,7 +84,8 @@ class GlobalController extends GetxController {
   getLocationMAN() async {
     // calling our weather API
     FetchWeatherAPI()
-        .processData(_latitude.value, _longitude.value)
+        .processData(globalLat,
+            globalLng) // processData(value.latitude, value.longitude)
         .then((value) {
       weatherData.value = value;
       _isLoading.value = false;

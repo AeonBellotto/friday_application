@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:friday_application/UTILITIES/theme.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
 import 'package:location_geocoder/location_geocoder.dart';
@@ -27,7 +28,7 @@ class _LocationWidgetState extends State<LocationWidget> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(seconds: 5), (timer) {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
       setState(() {
         _getAddress(globalLat, globalLng);
       });
@@ -67,30 +68,28 @@ class _LocationWidgetState extends State<LocationWidget> {
       city = address.first.locality!;
       country = address.first.countryCode!;
     });
-    print(city);
-    print(country);
   }
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(Icons.place_outlined, size: 18, color: Colors.white54),
-        const Text(
+        Icon(Icons.place_outlined, size: 18, color: baseColor.withOpacity(0.5)),
+        Text(
           " ",
-          style: const TextStyle(fontSize: 15, color: Colors.white54),
+          style: TextStyle(fontSize: 15, color: baseColor.withOpacity(0.5)),
         ),
         Text(
           city,
-          style: const TextStyle(fontSize: 15, color: Colors.white54),
+          style: TextStyle(fontSize: 15, color: baseColor.withOpacity(0.5)),
         ),
-        const Text(
+        Text(
           ", ",
-          style: const TextStyle(fontSize: 15, color: Colors.white54),
+          style: TextStyle(fontSize: 15, color: baseColor.withOpacity(0.5)),
         ),
         Text(
           country,
-          style: const TextStyle(fontSize: 15, color: Colors.white54),
+          style: TextStyle(fontSize: 15, color: baseColor.withOpacity(0.5)),
         ),
       ],
     );

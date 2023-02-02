@@ -1,8 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:friday_application/UTILITIES/theme.dart';
 import 'package:intl/intl.dart';
 
 class LeftSide extends StatefulWidget {
@@ -23,14 +22,12 @@ class _LeftSideState extends State<LeftSide> {
   void initState() {
     super.initState();
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (_dateTime.second != DateTime.now().second) {
-        setState(() {
-          date = DateFormat("EEEE, d MMMM y").format(DateTime.now());
-          time = DateFormat("HH:mm").format(DateTime.now());
-          seconds = DateFormat("ss").format(DateTime.now());
-          _dateTime = DateTime.now();
-        });
-      }
+      setState(() {
+        date = DateFormat("EEEE, d MMMM y").format(DateTime.now());
+        time = DateFormat("HH:mm").format(DateTime.now());
+        seconds = DateFormat("ss").format(DateTime.now());
+        _dateTime = DateTime.now();
+      });
     });
   }
 
@@ -51,9 +48,9 @@ class _LeftSideState extends State<LeftSide> {
               children: [
                 Text(
                   time,
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontSize: 70,
-                      color: Colors.white,
+                      color: baseColor,
                       fontWeight: FontWeight.normal),
                   textAlign: TextAlign.right,
                 ),
@@ -62,9 +59,9 @@ class _LeftSideState extends State<LeftSide> {
                 ),
                 Text(
                   seconds,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 30,
-                    color: Colors.white54,
+                    color: baseColor.withOpacity(0.5),
                   ),
                 ),
               ],
@@ -75,9 +72,9 @@ class _LeftSideState extends State<LeftSide> {
             margin: const EdgeInsets.only(left: 40, top: 5),
             child: Text(
               date,
-              style: const TextStyle(
+              style: TextStyle(
                   fontSize: 15,
-                  color: Colors.white54,
+                  color: baseColor.withOpacity(0.5),
                   fontWeight: FontWeight.normal),
               textAlign: TextAlign.start,
             ),

@@ -26,55 +26,15 @@ class _MainScreenState extends State<MainScreen> {
       body: GetBuilder<ServerController>(
         init: ServerController(),
         builder: ((controller) {
-          //readingComm(controller);
           return Row(
             children: [
               const LeftSide(),
-              Expanded(
-                  child: ListView(
-                children: controller.serverLogs.map((e) => Text("$e")).toList(),
-              )),
-              Text(controller.serverLogs.length.toString()),
-              //Text(controller.serverLogs.last),
-              ElevatedButton(
-                  onPressed: () {
-                    readingComm(controller);
-                    setState(() {});
-                  },
-                  child: Text("Clear")),
-              const RightSide()
+              const MidSide(),
+              const RightSide(),
             ],
           );
         }),
       ),
     );
-  }
-
-  Future<void> readingComm(ServerController controller) async {
-    if (controller.serverLogs.isNotEmpty) {
-      if (controller.serverLogs.last.startsWith("b")) {
-        baseBlue = int.parse(controller.serverLogs.last.substring(1));
-        print(baseBlue);
-        controller.serverLogs.removeLast();
-      } else if (controller.serverLogs.last.startsWith("g")) {
-        baseGreen = int.parse(controller.serverLogs.last.substring(1));
-        print(baseGreen);
-        controller.serverLogs.removeLast();
-      } else if (controller.serverLogs.last.startsWith("r")) {
-        baseRed = int.parse(controller.serverLogs.last.substring(1));
-        print(baseRed);
-        controller.serverLogs.removeLast();
-      } else if (controller.serverLogs.last.startsWith("a")) {
-        globalLat = double.parse(controller.serverLogs.last.substring(1));
-        print(globalLat);
-        controller.serverLogs.removeLast();
-      } else if (controller.serverLogs.last.startsWith("o")) {
-        globalLng = double.parse(controller.serverLogs.last.substring(1));
-        print(globalLng);
-        controller.serverLogs.removeLast();
-      } else {
-        controller.serverLogs.clear();
-      }
-    }
   }
 }

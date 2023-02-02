@@ -1,6 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:friday_application/UTILITIES/theme.dart';
 
 class MidSide extends StatefulWidget {
   const MidSide({super.key});
@@ -10,12 +11,14 @@ class MidSide extends StatefulWidget {
 }
 
 class _MidSideState extends State<MidSide> {
-  String _consoleLine = "";
-
   @override
   void initState() {
     super.initState();
-    setState(() {});
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        baseColor = Color.fromARGB(baseAlpha, baseRed, baseGreen, baseBlue);
+      });
+    });
   }
 
   @override

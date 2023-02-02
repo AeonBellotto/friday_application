@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:friday_application/CONTROLLER/global_controller.dart';
+import 'package:friday_application/UTILITIES/theme.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -30,13 +31,20 @@ class ServerController extends GetxController {
   void onData(Uint8List data) {
     final receviedData = String.fromCharCodes(data);
     serverLogs.add(receviedData);
+    print(receviedData);
     if (receviedData.startsWith("a")) {
       globalLat = double.parse(receviedData.substring(1));
     } else if (receviedData.startsWith("o")) {
       globalLng = double.parse(receviedData.substring(1));
+    } else if (receviedData.startsWith("rgb")) {
+      String temp = receviedData.substring(3);
+      baseRed = int.parse(temp.split(",")[0]);
+      print(baseRed);
+      baseGreen = int.parse(temp.split(",")[1]);
+      print(baseGreen);
+      baseBlue = int.parse(temp.split(",")[2]);
+      print(baseBlue);
     }
-    print(globalLat);
-    print(globalLng);
     update();
   }
 

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:friday_application/UTILITIES/theme.dart';
 import 'package:intl/intl.dart';
 import '../MODEL/weather_data_daily.dart';
 
@@ -39,25 +40,25 @@ class DailyDataForecast extends StatelessWidget {
                         width: 90,
                         child: Text(
                           getDay(weatherDataDaily.daily[index].dt),
-                          style: const TextStyle(
-                              color: Colors.white54, fontSize: 16),
+                          style: TextStyle(
+                              color: baseColor.withOpacity(0.5), fontSize: 16),
                         ),
                       ),
                       SizedBox(
                         width: 40,
                         height: 24,
                         child: Image.asset(
-                            "assets/weather/${weatherDataDaily.daily[index].weather![0].icon}.png"),
+                            "assets/weather/${weatherDataDaily.daily[index].weather![0].icon}.png",
+                            color: baseColor),
                       ),
                       Text(
                         "${weatherDataDaily.daily[index].temp!.min}°",
-                        style: const TextStyle(
-                            fontSize: 18, color: Colors.white54),
+                        style: TextStyle(
+                            fontSize: 18, color: baseColor.withOpacity(0.5)),
                       ),
                       Text(
                         "${weatherDataDaily.daily[index].temp!.max}°",
-                        style:
-                            const TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(fontSize: 18, color: baseColor),
                       ),
                     ],
                   ),
