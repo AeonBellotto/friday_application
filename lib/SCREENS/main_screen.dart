@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:friday_application/CONTROLLER/comm_controller.dart';
 import 'package:friday_application/CONTROLLER/global_controller.dart';
+import 'package:friday_application/SCREENS/bottom_side.dart';
 import 'package:friday_application/SCREENS/left_side.dart';
 import 'package:friday_application/SCREENS/mid_side.dart';
 import 'package:friday_application/SCREENS/right_side.dart';
@@ -26,11 +27,18 @@ class _MainScreenState extends State<MainScreen> {
       body: GetBuilder<ServerController>(
         init: ServerController(),
         builder: ((controller) {
-          return Row(
+          return Column(
             children: [
-              const LeftSide(),
-              const MidSide(),
-              const RightSide(),
+              Expanded(
+                child: Row(
+                  children: const [
+                    LeftSide(),
+                    MidSide(),
+                    RightSide(),
+                  ],
+                ),
+              ),
+              const BottomSide()
             ],
           );
         }),

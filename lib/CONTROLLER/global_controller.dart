@@ -33,7 +33,7 @@ class GlobalController extends GetxController {
     } else if (enableGPS == false) {
       _latitude.value = globalLat;
       _longitude.value = globalLng;
-      getLocationMAN();
+      //getLocationMAN();
     } else {
       getIndex();
     }

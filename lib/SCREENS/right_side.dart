@@ -26,7 +26,7 @@ class _RightSideState extends State<RightSide> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 600), (timer) {
       setState(() {
         globalController.getLocationMAN();
       });
